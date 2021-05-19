@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <title>Doguitos</title> 
+    </head>
+    <body>
+        <h1>SITE DE DOGUINHOS</h1>
+        <div id="dog1">
+            <img id="imagem1" src="Ibageins/2.jpeg" alt="Sammy"/> 
+            <h2 id="namedog1">Sammy</h2>
+        </div>
+        <div id="dog2">
+            <img class="imagem2" src="Ibageins/3.jpeg" alt="Dragão"/> 
+            <h2 id="namedog2">Dragão</h2>
+        </div>
+        <div id="dog3">
+            <img class="imagem3" src="Ibageins/4.jpeg" alt="Milton"/> 
+            <h2 id="namedog3">Milton</h2>
+        </div>
+        <div id="dog4">
+            <img class="imagem4" src="Ibageins/5.jpeg" alt="Penny"/> 
+            <h2 id="namedog4">Penny</h2>
+        </div>
+        <div id="dog5">
+            <img class="imagem5" src="Ibageins/6.jpeg" alt="Nenem"/> 
+            <h2 id="namedog5">Nenem</h2>
+        </div>
+        <div id="botauns">
+            <input id="btn" type="button" value="Nome dos Spitz" onclick="soSpitz();"/> <!--Filter  -->
+            <input id="btn" type="button" value="Idade Real" onclick="idadeReal();"/> <!-- Map -->
+            <input id="btn" type="button" value="Soma todas as Idades" onclick="idadeSoma();"/> <!-- Reduce -->
+            <input id="btn" type="button" value="Melhorar Site" onclick="mudaTudo();"/>
+        </div>
+
+        <script type="text/javascript"> 
+        dogs = [
+            {
+                nome: 'Sammy',
+                idade: 6,
+                raca: 'Samoieda'
+            },
+            {
+                nome: 'Dragão',
+                idade: 5,
+                raca: 'Spitz Alemão'
+            },
+            {
+                nome: 'Milton',
+                idade: 8,
+                raca: 'Spitz Alemão'
+            },
+            {
+                nome: 'Penny',
+                idade: 6,
+                raca: 'Spitz Alemão'
+            },
+            {
+                nome: 'Nenem',
+                idade: 4,
+                raca: 'Spitz Alemão'
+            },
+            ];
+
+            //solta seus script brabos aqui
+
+            function soSpitz(){
+                function isSpitz(raca){
+                    return raca === 'Spitz Alemão'
+                }
+                var Spitz = {}
+
+            }
+            //THE OFFICE
+            function mudaTudo(){
+                document.body.style.backgroundImage = "url(Ibageins/ed22348647268aebc05fa94420e7faca.jpg)";
+                document.querySelector("h1").innerHTML = "Michael Scott Moods"
+                document.querySelector("h1").style.fontSize = "40px";
+                document.querySelector("h1").style.color = "Black";
+
+                document.querySelector("#dog1").style.background = "none";
+                document.querySelector("#namedog1").innerHTML = "Prision Mike";
+                document.querySelector("#namedog1").style.color = "Black";
+                document.querySelector("#namedog1").style.fontSize = "20px;"
+                var img = document.querySelector("#imagem1");
+                img.setAttribute("src", "Ibageins/20133848690155.png")
+                document.querySelector("#imagem1").style.width = "400px";
+
+                document.querySelector("#dog2").style.background = "none";
+                document.querySelector("#namedog2").innerHTML = "Date Mike - nice to meet me";
+                document.querySelector("#namedog2").style.color = "Black";
+                document.querySelector("#namedog2").style.fontSize = "20px;"
+                var img2 = document.querySelector(".imagem2");
+                img2.setAttribute("src", "Ibageins/tumblr_l8vjvxa3DM1qckksto1_500_400x400.png")
+                document.querySelector(".imagem2").style.width = "400px";
+
+                document.querySelector("#dog3").style.background = "none";
+                document.querySelector("#namedog3").innerHTML = "Survivor";
+                document.querySelector("#namedog3").style.color = "Black";
+                document.querySelector("#namedog3").style.fontSize = "20px;"
+                var img3 = document.querySelector(".imagem3");
+                img3.setAttribute("src", "Ibageins/office-survivor.jpg")
+                document.querySelector(".imagem3").style.width = "400px";
+
+                document.querySelector("#dog4").style.background = "none";
+                document.querySelector("#namedog4").innerHTML = "Michael Scarn";
+                document.querySelector("#namedog4").style.color = "Black";
+                document.querySelector("#namedog4").style.fontSize = "20px;"
+                var img4 = document.querySelector(".imagem4");
+                img4.setAttribute("src", "Ibageins/The-Office-Threat-Level-Midnight.jpg")
+                document.querySelector(".imagem4").style.width = "400px";
+
+                document.querySelector("#dog5").style.background = "none";
+                document.querySelector("#namedog5").innerHTML = "Mc Mike";
+                document.querySelector("#namedog5").style.color = "Black";
+                document.querySelector("#namedog5").style.fontSize = "20px;"
+                var img5 = document.querySelector(".imagem5");
+                img5.setAttribute("src", "Ibageins/tumblr_ncbwmrdE661r7xnjso1_500.png")
+                document.querySelector(".imagem5").style.width = "400px";
+
+                
+
+            }
+
+
+        </script> 
+    </body>
+</html>

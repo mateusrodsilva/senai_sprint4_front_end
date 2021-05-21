@@ -35,7 +35,7 @@
         </div>
 
         <script type="text/javascript"> 
-        dogs = [
+            var dogs = [
             {
                 nome: 'Sammy',
                 idade: 6,
@@ -66,11 +66,33 @@
             //solta seus script brabos aqui
 
             function soSpitz(){
-                function isSpitz(raca){
-                    return raca === 'Spitz Alemão'
+                function isSpitz(dogs){
+                    return dogs.raca === 'Spitz Alemão'; 
                 }
-                var Spitz = {}
+                const spitz = dogs.filter(isSpitz).map(dog => {alert(dog.nome)})
 
+                var i;
+                for(i = 0; dogs.length; i++){
+                    function dognames(){
+                     dogs[i].nome;
+                    }    
+                    alert(dognames.filter(isSpitz));
+                }
+            }
+
+            function idadeReal(){
+                var idadeDogs = dogs;
+                var idadeReal = dogs.map(function(item){
+                    return ("Nome: " + item.nome + "-->" + "idade Real: " + item.idade*5 + "anos")
+                });
+                alert(idadeReal); 
+            }
+
+            function idadeSoma(){
+                var soma  = dogs.reduce(function(total, item){
+                    return total+item.idade;
+                },0);
+                alert(soma);
             }
             //THE OFFICE
             function mudaTudo(){

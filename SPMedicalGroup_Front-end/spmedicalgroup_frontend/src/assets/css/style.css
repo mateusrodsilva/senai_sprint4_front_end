@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700&display=swap');
+:root{
+    --font:'Titillium Web', sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: var(--font);
+}
+
+/* LOGIN */
+.content{
+    width: 85%;
+    height: 100%; 
+    margin: auto;
+}
+
+.flex-center-bt{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topo a img{
+    width: 74px;
+    height: 83px;
+}
+
+.menu{
+    width:100%;
+    max-width: 50em;
+}
+
+.menu ul{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.menu a{
+    color: black;
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 0.8em 0.5em;
+}
+
+.login_button{
+    background-color: #55D9D0;
+    cursor: pointer;
+}
+
+.banner{
+    font-family: var(--font);
+    width: 100%;
+    height: 90vh;
+    background: linear-gradient(180deg, rgba(105, 214, 240, 0.65) 0%, rgba(85, 217, 208, 0.45) 100%), url("../img/aprenda-como-montar-uma-clinica-medica-impecavel.jpeg");
+}
+.banner .content{
+    display: flex;
+}
+
+.conteudo_login{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.conteudo_login form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.email{
+    margin-top: 170px;
+}
+
+.senha{
+    margin-top: 35px;
+}
+
+.conteudo_login input{
+    width: 275px;
+    height: 55px;
+}
+
+.conteudo_login button{
+    width: 275px;
+    height: 55px;
+    background-color: #559CD9;
+    margin-top: 45px;
+    cursor: pointer;
+}
+
+/* CONSULTAS 
+
+.fundo_consultas{
+    width: 100%;
+    height: 800px;
+    background-color: #69D6F0;
+}
+
+.consultas{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.consultas h2{
+    margin-bottom: 100px;
+}
+
+.card_consulta{
+    width: 321px;
+    height: 535px;
+    background-color: #fff;
+    border: 2px black;
+    margin-left: 10px;
+}
+
+.info_consultas tr{
+    display: flex;
+    flex-direction: column;
+    width: 321px;
+    height: 535px;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-left: 10px;
+}
+
+.rodape{
+    width: 100%;
+    height: 210px;
+    color: #000;
+    display: flex;
+    background-color: rgba(85, 217, 208, 0.45);
+}
+.rodape ul{
+    list-style-type: none;
+}
+.rodape a{
+    text-decoration: none;
+    color: #000;
+}
+.conteudo-rodape{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+#logo_rodape{
+    width: 74px;
+    height: 100px;
+}
+.conteudo-rodape img{
+    display: flex;
+    margin-top: 15px;
+    width: 173px;
+    height: 50px;
+}
+
+/* CADASTRO */
+
+/* .fundo_cadastro{
+    width: 100vw;
+    height: 1200px;
+    background: linear-gradient(180deg, rgba(105, 214, 240, 0.65) 0%, rgba(85, 217, 208, 0.45) 100%), url(img/aprenda-como-montar-uma-clinica-medica-impecavel.jpeg);
+}
+
+.cadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+}
+.input_cadastro{
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+}
+
+.wrap{
+    flex-wrap: wrap;
+}
+.input_cadastro{
+    display: flex;
+    justify-content: space-around;
+}
+
+.input{
+    width: 14vw;
+    height: 6vh;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.input select{
+    width: 100%;
+    height: 100%;
+}
+
+.input input{
+    width: 100%;
+    height: 100%;
+}
+
+#botao_cadastrar{
+    margin-top: 130px;
+    width: 271px;
+    height: 64px;
+    background-color: #559CD9;
+    font-family: var(--font);
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.content .flex-center-bt .column{
+    justify-content: space-around;
+}
+
+.listagem_usuarios{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.listagem_usuarios table{
+    margin-top: 15px;
+}
+
+.listagem_usuarios th{
+    width: 20vw;
+} */
+
+/* CADASTRO CONSULTAS */
+/* .fundo_formulario_consulta{
+    width: 100vw;
+    height: 70vh;
+    background: linear-gradient(180deg, rgba(105, 214, 240, 0.65) 0%, rgba(85, 217, 208, 0.45) 100%), url(img/aprenda-como-montar-uma-clinica-medica-impecavel.jpeg);
+}
+
+.coluna_forms{
+    display: flex;
+    flex-direction: column;
+}
+
+.editar_consulta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.forms_consulta{
+    display: flex;
+}
+
+
+.campo_descricao{
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.campo_descricao textarea{
+    width: 40vw;
+    height: 40vh;
+}
+
+.campo_descricao button{
+    margin-top: 15px;
+    width: 271px;
+    height: 64px;
+    background-color: #559CD9;
+    font-family: var(--font);
+    font-weight: bold;
+    font-size: 25px;
+} */ 

@@ -7,6 +7,8 @@ import './index.css';
 
 import App from '../src/pages/home/App';
 import Login from './pages/login';
+import Consultas from './pages/consultas'
+import AttConsultas from './pages/att_consultas'
 
 
 import reportWebVitals from './reportWebVitals';
@@ -17,6 +19,8 @@ const routing = (
       <Switch>
         <Route exact path="/" component={App} /> {/* Home */}
         <Route path="/login" component={Login} /> {/* Login */}
+        <Route path="/consultas" component={Consultas}/>
+        <Route path="/atuallizarconsulta" component={AttConsultas}/>
         <Redirect to = "/notfound"/> {/* Redireciona para NotFound caso não encontre nenhuma rota */}
       </Switch>
     </div>

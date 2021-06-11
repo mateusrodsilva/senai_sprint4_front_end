@@ -1,10 +1,10 @@
+import '../assets/css/style.css'
 import React from 'react';
 import logo from '../assets/img/logo_spmedgroup_v1.png'
-import DownloadAppStore from '../assets/img/img/NicePng_itunes-logo-png_179971.png'
-import DownloadPlayStore from '../assets/img/img/get-it-on-google-play-badge.png'
+import DownloadApp from '../assets/img/download_appstore.png'
+import DownloadPlay from '../assets/img/get-it-on-google-play-badge.png'
 
-export default class Footer extends React.Component{
-    render(){
+export default function Footer (){
         return(
             <footer>
                 <div className="rodape">
@@ -22,13 +22,12 @@ export default class Footer extends React.Component{
                             <img id="logo_rodape" src={logo} alt="Logo SP Medical Group"></img>
                             <div className="link_Download">
                                 <h2>Baixe nosso App!</h2>
-                                <a><img src={DownloadAppStore} alt="Link para baixar o Aplicativo na App Store"></img></a>
-                                <a><img src={DownloadPlayStore} alt="Link para baixar o Aplicativo na Play Store"></img></a>
+                                <a><img src={DownloadApp} alt="Link para baixar o Aplicativo na App Store"></img></a>
+                                <a><img src={DownloadPlay} alt="Link para baixar o Aplicativo na Play Store"></img></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </footer>
         )
-    }
 }

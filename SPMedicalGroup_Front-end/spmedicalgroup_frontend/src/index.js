@@ -3,15 +3,30 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
 
-import './index.css';
+import './assets/css/style.css';
 
 import App from '../src/pages/home/App';
 import Login from './pages/login';
 import Consultas from './pages/consultas'
 import AttConsultas from './pages/att_consultas'
+import { parseJwt, usuarioAutenticado } from './services/auth';
 
 
 import reportWebVitals from './reportWebVitals';
+import CadUsuarios from './pages/cad_usuarios';
+
+const PermissaoAdm = ({ component : Component  }) => (
+  <Route 
+    render = { props =>
+      // Verifica se o usuário está logado e se é Administrador
+      usuarioAutenticado() && parseJwt().role === "1" ? 
+      // Se sim, renderiza de acordo com a rota solicitada e permitida
+      <Component {...props} /> : 
+      // Se não, redireciona para a página de login
+      <Redirect to = 'login' />
+    }
+  />
+);
 
 const routing = (
   <Router>
@@ -21,6 +36,7 @@ const routing = (
         <Route path="/login" component={Login} /> {/* Login */}
         <Route path="/consultas" component={Consultas}/>
         <Route path="/atuallizarconsulta" component={AttConsultas}/>
+        <PermissaoAdm path="/cadconsultas" component={CadUsuarios}/>
         <Redirect to = "/notfound"/> {/* Redireciona para NotFound caso não encontre nenhuma rota */}
       </Switch>
     </div>

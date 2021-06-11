@@ -1,7 +1,66 @@
 import '../assets/css/style.css'
 import Header from '../components/header'
+import axios from 'axios';
+import { Component } from 'react';
+import { parseJwt, usuarioAutenticado } from '../services/auth';
 
-function Login(){
+class Login extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            email : '',
+            senha : '',
+            erroMensagem : '',
+            isLoading : false
+        }
+    };
+
+    efetuaLogin = (event) => {
+        event.preventDefault();
+
+        this.setState({ erroMensagem : '', isLoading : true });
+
+        axios.post('http://localhost:5000/api/login', {
+            email : this.state.email,
+            senha : this.state.senha
+        })
+
+        // Verifica o retorno da requisição
+        .then(resposta => {
+            // Caso o status code seja 200,
+            if (resposta.status === 200) {
+
+                localStorage.setItem('tokenUsuario', resposta.data.token);
+                console.log('Meu token é: ' + resposta.data.token);
+
+                this.setState({ isLoading : false })
+
+
+                if (parseJwt().role === '1') {
+                    this.props.history.push('/consultas');
+                    console.log('estou logado: ' + usuarioAutenticado());
+                }
+
+                else {
+                    this.props.history.push('/')
+                }
+            }
+        })
+
+        // Caso haja um erro,
+        .catch(() => {
+            // define o state erroMensagem com uma mensagem personalizada e que a requisição terminou
+            this.setState({ erroMensagem : 'E-mail ou senha inválidos! Tente novamente.', isLoading : false });
+        })
+    }
+
+    // Função genérica que atualiza o state de acordo com o input
+    // pode ser reutilizada em vários inputs diferentes
+    atualizaStateCampo = (campo) => {
+        this.setState({ [campo.target.name] : campo.target.value })
+    };
+    
+    render(){
         return(
             <div className="Login">
                 <body>
@@ -11,12 +70,22 @@ function Login(){
                         <div className="content">
                                 <div className="conteudo_login">
                                     <h1>Bem Vindo</h1>
-                                    <form> 
-                                    <h3 className="email">Email</h3>
-                                    <input type="email" name="email" placeholder="Email"></input>
-                                    <h3 className="senha">Senha</h3>
-                                    <input type="password" name="senha" placeholder="Senha"></input>
-                                    <button type="submit">Entrar</button>
+                                    <form onSubmit={this.efetuaLogin}> 
+                                        <h3 className="email">Email</h3>
+                                        <input type="text" name="email" placeholder="Email" value={this.state.email} onChange={this.atualizaStateCampo}/>
+                                        <h3 className="senha">Senha</h3>
+                                        <input type="password" name="senha" placeholder="Password" value={this.state.senha} onChange={this.atualizaStateCampo}/>
+                                        {/* <p style={{ color : 'red', textAlign : 'center' }}>{this.state.erroMensagem}</p> */}
+
+                                        {
+                                            this.state.isLoading === true &&
+                                            <button type="submit" disabled>Loading...</button>
+                                        }
+
+                                        {
+                                            this.state.isLoading === false &&
+                                            <button type="submit" disabled={this.state.email === '' || this.state.senha === '' ? 'none' : ''}> Entrar</button>
+                                        }
                                     </form>
                                 </div>
                             </div>
@@ -25,6 +94,7 @@ function Login(){
                 </body>
             </div>
         )
+    }
 }
 
 export default Login;

@@ -2,7 +2,9 @@ import '../assets/css/style.css'
 import Header from '../components/header'
 import Footer from '../components/footer'
 
-function Consultas(){
+
+export default function Consultas(){
+
     return(
         <div className="Consultas">
             <body>
@@ -64,5 +66,3 @@ function Consultas(){
         </div>
     )
 }
-
-export default Consultas;

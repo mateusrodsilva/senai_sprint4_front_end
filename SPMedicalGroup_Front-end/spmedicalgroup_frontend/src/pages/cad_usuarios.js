@@ -2,7 +2,7 @@ import '../assets/css/style.css'
 import Header from '../components/header'
 import Footer from '../components/footer'
 
-function CadUsuarios(){
+export default function CadUsuarios(){
     return(
         <div className="CadUsuarios">
             <body>
@@ -94,6 +94,18 @@ function CadUsuarios(){
                                                     <th>Id Prontuario</th>
                                                 </tr>
                                     </thead>
+                                    {/* <tbody>
+                                        {
+                                            return(
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            )
+                                        }
+                                    </tbody> */}
                                 </table>
                             </section>
                         </div>
@@ -104,5 +116,3 @@ function CadUsuarios(){
         </div>
     )
 }
-
-export default CadUsuarios;

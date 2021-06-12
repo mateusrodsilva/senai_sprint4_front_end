@@ -2,9 +2,29 @@ import '../assets/css/style.css'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import { Component } from 'react'
+import { parseJwt} from '../services/auth';
+
 
 class CadUsuarios extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            nomeUsuario : '',
+            tipoUsuario : 0,
+            nomePaciente : '',
+            nomeMedico: '',
+            crm : '',
+            rg : '',
+            cpf : '',
+            endereco : '',
+            dataNascimento : new Date(),
+            telefone : '',
+            email : '',
+            senha: ''
+        }
+    }
 
+    
 
     render(){
         return(
@@ -26,6 +46,7 @@ class CadUsuarios extends Component{
                                                 <option value="2">Administrador</option>
                                             </select>
                                         </div>
+    
                                         
                                         <div className="input">
                                             <label for="">Nome de usuário</label>
@@ -87,31 +108,7 @@ class CadUsuarios extends Component{
                                     </form>
 
                                 </section>
-                                <section className="listagem_usuarios">
-                                    <h2>Lista de Usuários</h2>
-                                    <table>
-                                        <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Tipo de usuário</th>
-                                                        <th>Nome</th>
-                                                        <th>Id Prontuario</th>
-                                                    </tr>
-                                        </thead>
-                                        {/* <tbody>
-                                            {
-                                                return(
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                )
-                                            }
-                                        </tbody> */}
-                                    </table>
-                                </section>
+                                
                             </div>
                         </div>
                     </main>

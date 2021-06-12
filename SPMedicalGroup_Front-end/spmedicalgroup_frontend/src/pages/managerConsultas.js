@@ -1,13 +1,4 @@
-// import '../assets/css/style.css'
-import Header from '../components/header'
-import Footer from '../components/footer'
-import axios from 'axios';
-import { Component } from 'react';
-import logo from '../assets/img/logo_spmedgroup_v1.png'
-
-
-
-class ConsultasPaciente extends Component{
+class ManagerConsultas extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -17,7 +8,7 @@ class ConsultasPaciente extends Component{
 
     buscarConsultas = () => {
         // Faz a chamada para a API usando axios
-        axios.get('http://localhost:5000/api/consulta/minhasconsultas', {
+        axios.get('http://localhost:5000/api/consulta', {
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('tokenUsuario')
             }
@@ -49,20 +40,12 @@ class ConsultasPaciente extends Component{
                         </a>
                         <nav className="menu">
                                 <ul>
-                                    <li><a href="home.html">Home</a></li>
-                                    <li><a href="#">Consultas</a></li>
-                                    <li><a href="#">Sobre</a></li>
-                                    {
-                                        this.state.listaConsultas.map((e) => {
-                                            return(
-                                            <li>Olá, {e.idProntuarioNavigation.nomePaciente}</li>
-                                            );
-                                        } )
-                                    }
-                                </ul>                        
+                                    <li><a href="manager.js">Usuários</a></li>
+                                    <li><a href="managerConsultas.js">Consultas</a></li>
+                                    <li><a href="#">Olá, Administrador</a></li>
+                                </ul>                
                         </nav>
                     </div>
-
                 </header>
                         <div className="fundo_consultas">
                             <div className="content flex-center-bt">
@@ -78,7 +61,6 @@ class ConsultasPaciente extends Component{
                                                         <th>Médico: </th>
                                                         <th>Especialidade: </th>
                                                         <th>Paciente: </th>
-                                                        {/* <th>Clinica: </th> */}
                                                         <th>Situação: </th>
                                                         <th>Descrição: </th>
                                                     </tr>
@@ -94,7 +76,6 @@ class ConsultasPaciente extends Component{
                                                                         <td>{consulta.idMedicoNavigation.nomeMedico}</td>
                                                                         <td>{consulta.idMedicoNavigation.idEspecialidadeNavigation.nomeEspecialidade}</td>
                                                                         <td>{consulta.idProntuarioNavigation.nomePaciente}</td>
-                                                                        {/* <td>{consulta.idMedicoNavigation.idClinicaNavigation.nomeClinica}</td> */}
                                                                         <td>{consulta.situacao}</td>
                                                                         <td>{consulta.descricao}</td>
                                                                     </tr>
@@ -116,5 +97,3 @@ class ConsultasPaciente extends Component{
         )
     }
 }
-
-export default ConsultasPaciente;

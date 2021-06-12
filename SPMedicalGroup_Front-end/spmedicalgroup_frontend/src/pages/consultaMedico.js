@@ -1,13 +1,11 @@
-// import '../assets/css/style.css'
+import '../assets/css/style.css'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import axios from 'axios';
 import { Component } from 'react';
-import logo from '../assets/img/logo_spmedgroup_v1.png'
 
 
-
-class ConsultasPaciente extends Component{
+class ConsultasMedico extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -26,7 +24,6 @@ class ConsultasPaciente extends Component{
             // Caso a requisição retorne um status code 200,
             if (resposta.status === 200) {
                 this.setState({ listaConsultas : resposta.data })
-                console.log(resposta)
             }
         })
         // Caso ocorra algum erro, mostra no console do navegador
@@ -42,28 +39,7 @@ class ConsultasPaciente extends Component{
             <div className="Consultas">
                 <body>
                     <main>
-                    <header className="topo">
-                    <div className="content flex-center-bt">
-                        <a href="#">
-                            <img src={logo}></img>
-                        </a>
-                        <nav className="menu">
-                                <ul>
-                                    <li><a href="home.html">Home</a></li>
-                                    <li><a href="#">Consultas</a></li>
-                                    <li><a href="#">Sobre</a></li>
-                                    {
-                                        this.state.listaConsultas.map((e) => {
-                                            return(
-                                            <li>Olá, {e.idProntuarioNavigation.nomePaciente}</li>
-                                            );
-                                        } )
-                                    }
-                                </ul>                        
-                        </nav>
-                    </div>
-
-                </header>
+                        <Header/>
                         <div className="fundo_consultas">
                             <div className="content flex-center-bt">
                                 <section className="consultas">
@@ -78,9 +54,9 @@ class ConsultasPaciente extends Component{
                                                         <th>Médico: </th>
                                                         <th>Especialidade: </th>
                                                         <th>Paciente: </th>
-                                                        {/* <th>Clinica: </th> */}
                                                         <th>Situação: </th>
                                                         <th>Descrição: </th>
+                                                        <th>+ Descrição</th>
                                                     </tr>
                                                 </thead>
 
@@ -94,11 +70,13 @@ class ConsultasPaciente extends Component{
                                                                         <td>{consulta.idMedicoNavigation.nomeMedico}</td>
                                                                         <td>{consulta.idMedicoNavigation.idEspecialidadeNavigation.nomeEspecialidade}</td>
                                                                         <td>{consulta.idProntuarioNavigation.nomePaciente}</td>
-                                                                        {/* <td>{consulta.idMedicoNavigation.idClinicaNavigation.nomeClinica}</td> */}
                                                                         <td>{consulta.situacao}</td>
                                                                         <td>{consulta.descricao}</td>
+                                                                        {
+                                                                            <a>Adicionar Descricão</a>
+                                                                        }
                                                                     </tr>
-                                                                );
+                                                                )
                                                         })
                                                     }
                                                 </tbody>
@@ -117,4 +95,4 @@ class ConsultasPaciente extends Component{
     }
 }
 
-export default ConsultasPaciente;
+export default ConsultasMedico;

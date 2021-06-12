@@ -7,13 +7,14 @@ import './assets/css/style.css';
 
 import App from '../src/pages/home/App';
 import Login from './pages/login';
-import Consultas from './pages/consultas'
 import AttConsultas from './pages/att_consultas'
 import { parseJwt, usuarioAutenticado } from './services/auth';
 
 
 import reportWebVitals from './reportWebVitals';
 import CadUsuarios from './pages/cad_usuarios';
+import ConsultasPaciente from './pages/consultaPaciente';
+import ConsultasMedico from './pages/consultaMedico';
 
 const PermissaoAdm = ({ component : Component  }) => (
   <Route 
@@ -34,7 +35,8 @@ const routing = (
       <Switch>
         <Route exact path="/" component={App} /> {/* Home */}
         <Route path="/login" component={Login} /> {/* Login */}
-        <Route path="/consultas" component={Consultas}/>
+        <Route path="/consultaspacientes" component={ConsultasPaciente}/>
+        <Route path="/consultasmedico" component={ConsultasMedico}/>
         <Route path="/atuallizarconsulta" component={AttConsultas}/>
         <PermissaoAdm path="/cadconsultas" component={CadUsuarios}/>
         <Redirect to = "/notfound"/> {/* Redireciona para NotFound caso não encontre nenhuma rota */}

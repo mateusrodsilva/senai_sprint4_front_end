@@ -123,6 +123,11 @@
     margin-left: 10px;
 }
 
+.info_consultas{
+    display: flex;
+    flex-direction: column;
+}
+
 .info_consultas tr{
     display: flex;
     flex-direction: column;

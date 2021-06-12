@@ -1,7 +1,8 @@
 import '../assets/css/style.css'
 import Header from '../components/header'
-c
-import { parseJwt, usuarioAutenticado } from '../services/auth';
+import { parseJwt} from '../services/auth';
+import axios from 'axios';
+import { Component } from 'react';
 
 class Login extends Component {
     constructor(props){
@@ -34,15 +35,24 @@ class Login extends Component {
 
                 this.setState({ isLoading : false })
 
+                switch (parseJwt().role) {
+                    case '1':
+                        this.props.history.push('/consultas');
+                        break;
 
-                if (parseJwt().role === '1') {
-                    this.props.history.push('/consultas');
-                    console.log('estou logado: ' + usuarioAutenticado());
+                    case '2':
+                        this.props.history.push('/consultasmedico');
+                        break;
+
+                    case '3':
+                        this.props.history.push('/consultaspacientes');
+                        break;
+                
+                    default:
+                        this.props.history.push('/');
+                        break;
                 }
 
-                else {
-                    this.props.history.push('/')
-                }
             }
         })
 

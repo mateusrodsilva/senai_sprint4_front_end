@@ -33,8 +33,7 @@ class Consultas extends Component{
     componentDidMount(){
         this.buscarConsultas();
     }
-    
-    
+
     render(){
         return(
             <div className="Consultas">
@@ -55,33 +54,6 @@ class Consultas extends Component{
                                                         <th>Especialidade :</th>
                                                         <th>Paciente :</th>
                                                         <th>Clinica :</th>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div className="card_consulta">
-                                            <table className="info_consultas">
-                                                <tbody>
-                                                    <tr>
-                                                        <th>Data :</th>
-                                                        <th>Médico :</th>
-                                                        <th>Especialidade :</th>
-                                                        <th>Paciente :</th>
-                                                        <th>Clinica :</th>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div className="card_consulta">
-                                            <table className="info_consultas">
-                                                <tbody>
-                                                    <tr>
-                                                        <th>Data :</th>
-                                                        <th>Médico :</th>
-                                                        <th>Especialidade :</th>
-                                                        <th>Paciente :</th>
-                                                        <th>Clinica :</th>
-                                                        <th>+ Descrição</th>
                                                     </tr>
                                                 </tbody>
                                             </table>

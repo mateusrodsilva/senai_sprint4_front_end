@@ -1,7 +1,6 @@
 import '../assets/css/style.css'
 import Header from '../components/header'
-import axios from 'axios';
-import { Component } from 'react';
+c
 import { parseJwt, usuarioAutenticado } from '../services/auth';
 
 class Login extends Component {

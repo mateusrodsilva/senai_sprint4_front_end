@@ -15,19 +15,21 @@ import reportWebVitals from './reportWebVitals';
 import CadUsuarios from './pages/cad_usuarios';
 import ConsultasPaciente from './pages/consultaPaciente';
 import ConsultasMedico from './pages/consultaMedico';
+import Manager from './pages/manager';
+import ManagerConsultas from './pages/managerConsultas';
 
-const PermissaoAdm = ({ component : Component  }) => (
-  <Route 
-    render = { props =>
-      // Verifica se o usuário está logado e se é Administrador
-      usuarioAutenticado() && parseJwt().role === "1" ? 
-      // Se sim, renderiza de acordo com a rota solicitada e permitida
-      <Component {...props} /> : 
-      // Se não, redireciona para a página de login
-      <Redirect to = 'login' />
-    }
-  />
-);
+// const PermissaoAdm = ({ component : Component  }) => (
+//   <Route 
+//     render = { props =>
+//       // Verifica se o usuário está logado e se é Administrador
+//       parseJwt().role === "1" ? 
+//       // Se sim, renderiza de acordo com a rota solicitada e permitida
+//       <Component {...props} /> : 
+//       // Se não, redireciona para a página de login
+//       <Redirect to = 'login' />
+//     }
+//   />
+// );
 
 const routing = (
   <Router>
@@ -37,8 +39,9 @@ const routing = (
         <Route path="/login" component={Login} /> {/* Login */}
         <Route path="/consultaspacientes" component={ConsultasPaciente}/>
         <Route path="/consultasmedico" component={ConsultasMedico}/>
-        <Route path="/atuallizarconsulta" component={AttConsultas}/>
-        <PermissaoAdm path="/cadconsultas" component={CadUsuarios}/>
+        <Route path="/attconsultas" component={AttConsultas}/>
+        <Route path="/administrador" component={Manager}/>
+        <Route path="/consultasadm" component={ManagerConsultas}/>
         <Redirect to = "/notfound"/> {/* Redireciona para NotFound caso não encontre nenhuma rota */}
       </Switch>
     </div>

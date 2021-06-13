@@ -1,4 +1,8 @@
-import '../assets/css/style.css'
+import Header from '../components/header'
+import Footer from '../components/footer'
+import axios from 'axios';
+import { Component } from 'react';
+import logo from '../assets/img/logo_spmedgroup_v1.png'
 
 class Manager extends Component{
     constructor(props){
@@ -39,7 +43,7 @@ class Manager extends Component{
                         <nav className="menu">
                                 <ul>
                                     <li><a href="manager.js">Usuários</a></li>
-                                    <li><a href="#">Consultas</a></li>
+                                    <li><a href="manangerConsultas.js">Consultas</a></li>
                                     <li><a href="#">Olá, Administrador</a></li>
                                 </ul>                
                         </nav>
@@ -61,10 +65,10 @@ class Manager extends Component{
                                         {
                                             this.state.listaUsuarios.map((usuario)=> {
                                             return(
-                                                <tr key={usuario.IdUsuario}>
-                                                    <td>{usuario.IdUsuario}</td>
-                                                    <td>{usuario.idTipoUsuarioNavigation.TituloTipoUsuario}</td>
-                                                    <td>{usuario.NomeUsuario}</td>
+                                                <tr key={usuario.idUsuario}>
+                                                    <td>{usuario.idUsuario}</td>
+                                                    <td>{usuario.idTipoUsuario}</td>
+                                                    <td>{usuario.nomeUsuario}</td>
                                                 </tr>
                                                 );
 
@@ -81,3 +85,5 @@ class Manager extends Component{
         )
     }
 }
+
+export default Manager;

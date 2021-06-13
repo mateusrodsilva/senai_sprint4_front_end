@@ -7,8 +7,35 @@ class AttConsultas extends Component{
     constructor(props){
         super(props);
         this.state = {
-            descricao : ''
+            descricao : '',
+            isLoading : false,
+            idConsulta : 0
         }
+    }
+
+    cadastrardescricao = (event) => {
+
+        event.preventDefault()
+        this.setState({isLoading : true})
+
+        let descricao = {
+            descricao : this.state.descricao
+        }
+
+        axios.patch('http://localhost:5000/attdescricao' + descricao, {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('tokenUsuario')
+            }
+        })
+        .then(resposta => {
+            if (resposta.status === 201) {
+                this.setState({ isLoading : false })
+            }
+        })
+        .catch(erro => {
+            console.log(erro);
+            this.setState({ isLoading : false });
+        })
     }
 
 
@@ -25,6 +52,23 @@ class AttConsultas extends Component{
                                     <h2>Consulta </h2>
 
                                     <form action="#" className="forms_consulta">
+                                    <div className="input">
+                                                <label for=""></label>
+                                                <select name="idProntuario" value={idProntuario}
+                                                onChange={(event) => this.setState({idProntuario : event.target.value  })}>
+                                                <option value="0">Paciente</option>
+                                                {
+                                                    this.state.listaPacientes.map(paciente => {
+                                                        return (
+                                                            <option key={paciente.idProntuario} value={paciente.idProntuario}>
+                                                                {paciente.nomePaciente}
+                                                            </option>
+                                                        )
+                                                    })
+                                                }
+
+                                            </select>
+                                            </div>
                                         <div className="campo_descricao">
                                             <label for="">Descrição</label>
                                             <textarea id="" name="story"rows="30" cols="50" placeholder="Adicione uma descrição a esta consulta"></textarea>

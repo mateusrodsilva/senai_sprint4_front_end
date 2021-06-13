@@ -2,15 +2,90 @@ import '../assets/css/style.css'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import React, { Component } from 'react';
+import axios from 'axios'
 
 class AttConsultas extends Component{
     constructor(props){
         super(props);
         this.state = {
-            descricao : []
+            listaPacientes : [],
+            listaMedicos : [],
+            idProntuario : 0,
+            idMedico : 0,
+            dataConsulta : new Date(),
+            situacao : '',
+            descricao : '',
+            isLoading : false
         }
     }
 
+    buscarMedicos = () => {
+        axios.get('http://localhost:5000/api/medico', {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('tokenUsuario')
+            }
+        })
+        .then(resposta => {
+            // Caso a requisição retorne um status code 200,
+            if (resposta.status === 200) {
+                this.setState({ listaMedicos : resposta.data })
+            }
+        })
+        .catch(erro => console.log(erro))
+    }
+
+    buscarPacientes = () => {
+        axios.get('http://localhost:5000/api/Prontuario', {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('tokenUsuario')
+            }
+        })
+        .then(resposta => {
+            // Caso a requisição retorne um status code 200,
+            if (resposta.status === 200) {
+                this.setState({ listaPacientes : resposta.data })
+            }
+        })
+        .catch(erro => console.log(erro))
+    }
+
+    cadastrarConsulta = (event) => {
+
+        event.preventDefault()
+        this.setState({isLoading : true})
+
+        let consulta = {
+            idProntuario : this.state.idProntuario,
+            idMedico : this.state.idMedico,
+            dataConsulta : this.state.dataConsulta,
+            situacao : this.state.situacao,
+            descricao : this.state.descricao
+        }
+
+        axios.post('http://localhost:5000/api/Consulta' + consulta, {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('tokenUsuario')
+            }
+        })
+        .then(resposta => {
+            if (resposta.status === 201) {
+                this.setState({ isLoading : false })
+            }
+        })
+        .catch(erro => {
+            console.log(erro);
+            this.setState({ isLoading : false });
+        })
+    }
+
+    atualizaStateCampo = (campo) => {
+        this.setState({ [campo.target.name] : campo.target.value })
+    };
+
+    componentDidMount(){
+        this.buscarMedicos();
+        this.buscarPacientes();
+    }
 
     render(){
         return(
@@ -23,33 +98,59 @@ class AttConsultas extends Component{
                                 <section className="editar_consulta">
                                     <h2>Consulta </h2>
 
-                                    <form action="#" className="forms_consulta">
+                                    <form onSubmit={this.state.cadastrarConsulta} className="forms_consulta">
                                         <div className="coluna_forms">
 
                                             <div className="input">
                                                 <label for="">Nome Paciente</label>
-                                                <input type="text" placeholder="Nome do Paciente"></input>
+                                                <select name="idProntuario" value={this.state.idProntuario}
+                                                onChange={this.atualizaStateCampo}>
+                                                <option value="0">Paciente</option>
+                                                {
+                                                    this.state.listaPacientes.map(paciente => {
+                                                        return (
+                                                            <option key={paciente.idProntuario} value={paciente.idProntuario}>
+                                                                {paciente.nomePaciente}
+                                                            </option>
+                                                        )
+                                                    })
+                                                }
+
+                                            </select>
                                             </div>
                                             <div className="input">
                                                 <label for="">Nome Médico</label>
-                                                <input type="text" placeholder="Nome Médico"></input>
+                                                <select name="idMedico" value={this.state.idMedico}
+                                                onChange={this.atualizaStateCampo}>
+                                                <option value="0">Médico</option>
+                                                {
+                                                    this.state.listaMedicos.map(medico => {
+                                                        return (
+                                                            <option key={medico.idMedico} value={medico.idMedico}>
+                                                                {medico.nomeMedico}
+                                                            </option>
+                                                        )
+                                                    })
+                                                }
+
+                                            </select>
                                             </div>
                                             <div className="input">
                                                 <label for="">Data</label>
-                                                <input type="date" placeholder="Data"></input>
+                                                <input name="dataConsulta" type="date" placeholder="Data"onChange={this.atualizaStateCampo}></input>
                                             </div>
                                             <div className="input">
                                                 <label for="">Situação</label>
-                                                <select name="" id="">
-                                                    <option value="0">Agendada</option>
-                                                    <option value="1">Cancelada</option>
-                                                    <option value="2">Realizada</option>
+                                                <select name="situacao" onChange={this.atualizaStateCampo}>
+                                                    <option>Agendada</option>
+                                                    <option>Cancelada</option>
+                                                    <option>Realizada</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div className="campo_descricao">
                                             <label for="">Descrição</label>
-                                            <textarea id="" name="story"rows="30" cols="50" placeholder="Adicione uma descrição a esta consulta"></textarea>
+                                            <textarea id="" name="descricao"rows="30" cols="50" onChange={this.atualizaStateCampo} placeholder="Adicione uma descrição a esta consulta"></textarea>
                                             <button type="submit">Cadastrar</button>
                                         </div>
                                     </form>
@@ -63,3 +164,5 @@ class AttConsultas extends Component{
         )
     }
 }
+
+export default AttConsultas;

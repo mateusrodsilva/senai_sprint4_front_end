@@ -111,32 +111,27 @@
     align-items: center;
 }
 
+
 .consultas h2{
     margin-bottom: 100px;
-}
-
-.card_consulta{
-    width: 321px;
-    height: 535px;
-    background-color: #fff;
-    border: 2px black;
-    margin-left: 10px;
 }
 
 .info_consultas{
     display: flex;
     flex-direction: column;
 }
-
-.info_consultas tr{
-    display: flex;
-    flex-direction: column;
-    width: 321px;
-    height: 535px;
-    align-items: flex-start;
-    justify-content: space-around;
-    margin-left: 10px;
+.info_consultas thead th{
+    width: 150px;
+    background-color: white;
 }
+
+.info_consultas tbody td{
+    width: 150px;
+    background-color: white;
+    text-align: center;
+}
+
+
 
 .rodape{
     width: 100%;
@@ -248,13 +243,21 @@
 
 .listagem_usuarios th{
     width: 20vw;
-} 
+    background-color:white ;
+}
+
+.listagem_usuarios td{
+    text-align: center;
+    background-color:#D3EDE6 ;
+}
+
+.listagem_usuarios 
 
 /* CADASTRO CONSULTAS */
 .fundo_formulario_consulta{
     width: 100vw;
     height: 70vh;
-    /*background-imagem: url('../img/aprenda-como-montar-uma-clinica-medica-impecavel.jpeg');*/
+    background: linear-gradient(180deg, rgba(105, 214, 240, 0.65) 0%, rgba(85, 217, 208, 0.45) 100%), url('../img/aprenda-como-montar-uma-clinica-medica-impecavel.jpeg');
 }
 
 .coluna_forms{

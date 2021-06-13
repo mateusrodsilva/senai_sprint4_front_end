@@ -1,3 +1,11 @@
+import Header from '../components/header'
+import Footer from '../components/footer'
+import axios from 'axios';
+import { Component } from 'react';
+import logo from '../assets/img/logo_spmedgroup_v1.png'
+
+
+
 class ManagerConsultas extends Component{
     constructor(props){
         super(props);
@@ -41,7 +49,7 @@ class ManagerConsultas extends Component{
                         <nav className="menu">
                                 <ul>
                                     <li><a href="manager.js">Usuários</a></li>
-                                    <li><a href="managerConsultas.js">Consultas</a></li>
+                                    <li><a >Consultas</a></li>
                                     <li><a href="#">Olá, Administrador</a></li>
                                 </ul>                
                         </nav>
@@ -97,3 +105,5 @@ class ManagerConsultas extends Component{
         )
     }
 }
+
+export default ManagerConsultas;

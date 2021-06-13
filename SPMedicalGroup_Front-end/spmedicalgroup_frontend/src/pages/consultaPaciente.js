@@ -69,7 +69,6 @@ class ConsultasPaciente extends Component{
                                 <section className="consultas">
                                     <h2>Consultas</h2>
                                     <div className="flex-center-bt">
-                                        <div className="card_consulta">
                                             <table className="info_consultas">
                                                 <thead>
                                                     <tr>
@@ -78,7 +77,6 @@ class ConsultasPaciente extends Component{
                                                         <th>Médico: </th>
                                                         <th>Especialidade: </th>
                                                         <th>Paciente: </th>
-                                                        {/* <th>Clinica: </th> */}
                                                         <th>Situação: </th>
                                                         <th>Descrição: </th>
                                                     </tr>
@@ -93,9 +91,7 @@ class ConsultasPaciente extends Component{
                                                                         <td>{new Date(consulta.dataConsulta).toLocaleTimeString()}</td>
                                                                         <td>{consulta.idMedicoNavigation.nomeMedico}</td>
                                                                         <td>{consulta.idMedicoNavigation.idEspecialidadeNavigation.nomeEspecialidade}</td>
-                                                                        <td>{consulta.idProntuarioNavigation.nomePaciente}</td>
-                                                                        {/* <td>{consulta.idMedicoNavigation.idClinicaNavigation.nomeClinica}</td> */}
-                                                                        <td>{consulta.situacao}</td>
+                                                                        <td>{consulta.idProntuarioNavigation.nomePaciente}</td>                                                                        <td>{consulta.situacao}</td>
                                                                         <td>{consulta.descricao}</td>
                                                                     </tr>
                                                                 );
@@ -103,7 +99,6 @@ class ConsultasPaciente extends Component{
                                                     }
                                                 </tbody>
                                             </table>
-                                        </div>
                                     </div>
                                 </section>
                             </div>

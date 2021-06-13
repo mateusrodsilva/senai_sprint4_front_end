@@ -37,7 +37,7 @@ class Login extends Component {
 
                 switch (parseJwt().role) {
                     case '1':
-                        this.props.history.push('/consultas');
+                        this.props.history.push('/administrador');
                         break;
 
                     case '2':
@@ -84,7 +84,7 @@ class Login extends Component {
                                         <input type="text" name="email" placeholder="Email" value={this.state.email} onChange={this.atualizaStateCampo}/>
                                         <h3 className="senha">Senha</h3>
                                         <input type="password" name="senha" placeholder="Password" value={this.state.senha} onChange={this.atualizaStateCampo}/>
-                                        {/* <p style={{ color : 'red', textAlign : 'center' }}>{this.state.erroMensagem}</p> */}
+                                        <p style={{ color : 'red', textAlign : 'center' }}>{this.state.erroMensagem}</p>
 
                                         {
                                             this.state.isLoading === true &&

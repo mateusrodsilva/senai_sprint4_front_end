@@ -62,7 +62,7 @@ class AttConsultas extends Component{
             descricao : this.state.descricao
         }
 
-        axios.post('http://localhost:5000/api/Consulta' + consulta, {
+        axios.post('http://localhost:5000/api/consulta' , consulta, {
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('tokenUsuario')
             }
@@ -98,7 +98,7 @@ class AttConsultas extends Component{
                                 <section className="editar_consulta">
                                     <h2>Consulta </h2>
 
-                                    <form onSubmit={this.state.cadastrarConsulta} className="forms_consulta">
+                                    <form onSubmit={this.cadastrarConsulta} className="forms_consulta">
                                         <div className="coluna_forms">
 
                                             <div className="input">
@@ -151,8 +151,8 @@ class AttConsultas extends Component{
                                         <div className="campo_descricao">
                                             <label for="">Descrição</label>
                                             <textarea id="" name="descricao"rows="30" cols="50" onChange={this.atualizaStateCampo} placeholder="Adicione uma descrição a esta consulta"></textarea>
-                                            <button type="submit">Cadastrar</button>
                                         </div>
+                                            <button type="submit">Cadastrar</button>
                                     </form>
                                 </section>
                             </div>

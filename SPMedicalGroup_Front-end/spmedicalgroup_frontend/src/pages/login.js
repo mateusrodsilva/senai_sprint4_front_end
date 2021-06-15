@@ -37,7 +37,7 @@ class Login extends Component {
 
                 switch (parseJwt().role) {
                     case '1':
-                        this.props.history.push('/administrador');
+                        this.props.history.push('/attconsultas');
                         break;
 
                     case '2':

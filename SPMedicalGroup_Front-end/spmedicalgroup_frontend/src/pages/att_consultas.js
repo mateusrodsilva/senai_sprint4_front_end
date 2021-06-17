@@ -15,7 +15,8 @@ class AttConsultas extends Component{
             dataConsulta : new Date(),
             situacao : '',
             descricao : '',
-            isLoading : false
+            isLoading : false,
+            redirect : false
         }
     }
 
@@ -82,12 +83,21 @@ class AttConsultas extends Component{
         this.setState({ [campo.target.name] : campo.target.value })
     };
 
+    goConsultasManager = () => {
+        this.setState({
+          redirect: true
+        })
+       }
+
     componentDidMount(){
         this.buscarMedicos();
         this.buscarPacientes();
     }
 
     render(){
+        if(this.state.redirect) {
+            return <Redirect to="/pages/managerConsultas" />    
+          }
         return(
             <div className="AttConsultas">
                 <body>
@@ -152,7 +162,7 @@ class AttConsultas extends Component{
                                             <label for="">Descrição</label>
                                             <textarea id="" name="descricao"rows="30" cols="50" onChange={this.atualizaStateCampo} placeholder="Adicione uma descrição a esta consulta"></textarea>
                                         </div>
-                                            <button type="submit">Cadastrar</button>
+                                            <button onClick={() => this.goConsultasManager} type="submit">Cadastrar</button>
                                     </form>
                                 </section>
                             </div>

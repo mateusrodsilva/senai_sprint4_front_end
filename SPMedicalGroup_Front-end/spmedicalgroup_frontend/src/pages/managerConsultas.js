@@ -32,6 +32,30 @@ class ManagerConsultas extends Component{
         .catch(erro => console.log(erro))
     };
 
+
+    excluirConsulta = (consulta) => {
+        axios.delete('http://localhost:5000/api/tiposeventos/' ,consulta.idConsulta,{
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('tokenUsuario')
+            }
+        })
+
+        // Caso a requisição retorne um status code 204,
+        .then(resposta => {
+            if (resposta.status === 204) {
+                // Exibe no console do navegador a mensagem 'Tipo de Evento x excluído!' onde x é o ID do Tipo de Evento excluído
+                console.log('Consulta' + consulta.idConsulta + ' excluída!')
+            };
+        })
+
+        // Caso ocorra alguma erro, exibe este erro no console do navegador
+        .catch(erro => console.log(erro))
+
+        // Então, atualiza a lista de Tipos de Eventos
+        // sem o usuário precisar executar outra ação
+        .then(this.buscarConsultas)
+    }
+
         componentDidMount(){
             this.buscarConsultas();
         }

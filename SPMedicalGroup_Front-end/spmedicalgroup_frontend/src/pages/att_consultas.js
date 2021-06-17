@@ -2,7 +2,9 @@ import '../assets/css/style.css'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 import axios from 'axios'
+import logo from '../assets/img/logo_spmedgroup_v1.png'
 
 class AttConsultas extends Component{
     constructor(props){
@@ -15,8 +17,7 @@ class AttConsultas extends Component{
             dataConsulta : new Date(),
             situacao : '',
             descricao : '',
-            isLoading : false,
-            redirect : false
+            isLoading : false        
         }
     }
 
@@ -83,11 +84,16 @@ class AttConsultas extends Component{
         this.setState({ [campo.target.name] : campo.target.value })
     };
 
-    goConsultasManager = () => {
+    limparCampos = () => {
         this.setState({
-          redirect: true
+            idProntuario : 0,
+            idMedico : 0,
+            dataConsulta : new Date(),
+            situacao : 0,
+            descricao : ''
         })
-       }
+        // Exibe no console do navegador a mensagem 'Os states foram resetados!'
+    }
 
     componentDidMount(){
         this.buscarMedicos();
@@ -95,14 +101,24 @@ class AttConsultas extends Component{
     }
 
     render(){
-        if(this.state.redirect) {
-            return <Redirect to="/pages/managerConsultas" />    
-          }
         return(
             <div className="AttConsultas">
                 <body>
                     <main>
-                        <Header/>
+                    <header className="topo">
+                    <div className="content flex-center-bt">
+                        <a href="#">
+                            <img src={logo}></img>
+                        </a>
+                        <nav className="menu">
+                                <ul>
+                                    <li><Link to='/administrador' >Usuários</Link></li>
+                                    <li><Link to='/consultasadm' >Consultas</Link></li>
+                                    <li><a href="#">Olá, Administrador</a></li>
+                                </ul>                
+                        </nav>
+                    </div>
+                </header>
                         <div className="fundo_formulario_consulta">
                             <div className="content">
                                 <section className="editar_consulta">
@@ -152,17 +168,18 @@ class AttConsultas extends Component{
                                             <div className="input">
                                                 <label for="">Situação</label>
                                                 <select name="situacao" onChange={this.atualizaStateCampo}>
-                                                    <option>Agendada</option>
-                                                    <option>Cancelada</option>
-                                                    <option>Realizada</option>
+                                                    <option value='0' >Selecione</option>
+                                                    <option value='1'>Agendada</option>
+                                                    <option value='2'>Cancelada</option>
+                                                    <option value='3'>Realizada</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div className="campo_descricao">
                                             <label for="">Descrição</label>
-                                            <textarea id="" name="descricao"rows="30" cols="50" onChange={this.atualizaStateCampo} placeholder="Adicione uma descrição a esta consulta"></textarea>
+                                            <textarea name="descricao"rows="30" cols="50" onChange={this.atualizaStateCampo} placeholder="Adicione uma descrição a esta consulta"></textarea>
+                                            <button type="submit" onClick={this.limparCampos}>Cadastrar</button>
                                         </div>
-                                            <button onClick={() => this.goConsultasManager} type="submit">Cadastrar</button>
                                     </form>
                                 </section>
                             </div>

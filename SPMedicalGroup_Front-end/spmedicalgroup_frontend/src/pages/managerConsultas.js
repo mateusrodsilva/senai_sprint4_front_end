@@ -2,6 +2,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import axios from 'axios';
 import { Component } from 'react';
+import {Link} from 'react-router-dom'
 import logo from '../assets/img/logo_spmedgroup_v1.png'
 
 
@@ -34,7 +35,7 @@ class ManagerConsultas extends Component{
 
 
     excluirConsulta = (consulta) => {
-        axios.delete('http://localhost:5000/api/tiposeventos/' ,consulta.idConsulta,{
+        axios.delete('http://localhost:5000/api/consulta/' ,consulta.idConsulta,{
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('tokenUsuario')
             }
@@ -72,9 +73,9 @@ class ManagerConsultas extends Component{
                         </a>
                         <nav className="menu">
                                 <ul>
-                                    <li><a href="manager.js">Usuários</a></li>
-                                    <li><a >Consultas</a></li>
-                                    <li><a href="#">Olá, Administrador</a></li>
+                                    <li><Link to='/administrador'>Usuários</Link></li>
+                                    <li><Link to='/consultasadm'>Consultas</Link></li>
+                                    <li><a>Olá, Administrador</a></li>
                                 </ul>                
                         </nav>
                     </div>
@@ -90,9 +91,9 @@ class ManagerConsultas extends Component{
                                                     <tr>
                                                         <th>Data: </th>
                                                         <th>Horário: </th>
-                                                        <th>Médico: </th>
-                                                        <th>Especialidade: </th>
-                                                        <th>Paciente: </th>
+                                                        {/* <th>Médico: </th> */}
+                                                        {/* <th>Especialidade: </th> */}
+                                                        {/* <th>Paciente: </th> */}
                                                         <th>Situação: </th>
                                                         <th>Descrição: </th>
                                                     </tr>
@@ -105,11 +106,12 @@ class ManagerConsultas extends Component{
                                                                     <tr key={consulta.IdConsulta}>
                                                                         <td>{new Date(consulta.dataConsulta).toLocaleDateString()}</td>
                                                                         <td>{new Date(consulta.dataConsulta).toLocaleTimeString()}</td>
-                                                                        <td>{consulta.idMedicoNavigation.nomeMedico}</td>
-                                                                        <td>{consulta.idMedicoNavigation.idEspecialidadeNavigation.nomeEspecialidade}</td>
-                                                                        <td>{consulta.idProntuarioNavigation.nomePaciente}</td>
+                                                                        {/* <td>{consulta.idMedicoNavigation.nomeMedico}</td> */}
+                                                                        {/* <td>{consulta.idMedicoNavigation.idEspecialidadeNavigation.nomeEspecialidade}</td> */}
+                                                                        {/* <td>{consulta.idProntuarioNavigation.nomePaciente}</td> */}
                                                                         <td>{consulta.situacao}</td>
                                                                         <td>{consulta.descricao}</td>
+                                                                        <td><button onClick={() => this.excluirConsulta(consulta)}>Excluir</button></td>
                                                                     </tr>
                                                                 );
                                                         })

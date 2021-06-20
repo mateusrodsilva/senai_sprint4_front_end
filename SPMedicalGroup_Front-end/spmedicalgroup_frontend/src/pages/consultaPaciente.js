@@ -52,13 +52,7 @@ class ConsultasPaciente extends Component{
                                     <li><a href="home.html">Home</a></li>
                                     <li><a href="#">Consultas</a></li>
                                     <li><a href="#">Sobre</a></li>
-                                    {
-                                        this.state.listaConsultas.map((e) => {
-                                            return(
-                                            <li>Olá, {e.idProntuarioNavigation.nomePaciente}</li>
-                                            );
-                                        } )
-                                    }
+                                    <li><a href="#">Olá, Paciente</a></li> 
                                 </ul>                        
                         </nav>
                     </div>

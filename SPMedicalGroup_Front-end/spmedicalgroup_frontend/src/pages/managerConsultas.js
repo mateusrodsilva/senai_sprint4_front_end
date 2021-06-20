@@ -35,7 +35,10 @@ class ManagerConsultas extends Component{
 
 
     excluirConsulta = (consulta) => {
-        axios.delete('http://localhost:5000/api/consulta/' ,consulta.idConsulta,{
+        fetch('http://localhost:5000/api/consulta/' + consulta.idConsulta ,
+        {
+            method : 'DELETE',
+
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('tokenUsuario')
             }
@@ -91,11 +94,12 @@ class ManagerConsultas extends Component{
                                                     <tr>
                                                         <th>Data: </th>
                                                         <th>Horário: </th>
-                                                        {/* <th>Médico: </th> */}
-                                                        {/* <th>Especialidade: </th> */}
-                                                        {/* <th>Paciente: </th> */}
+                                                        <th>Médico: </th>
+                                                        <th>Especialidade: </th>
+                                                        <th>Paciente: </th>
                                                         <th>Situação: </th>
                                                         <th>Descrição: </th>
+                                                        <th>Excluir </th>
                                                     </tr>
                                                 </thead>
 
@@ -106,9 +110,9 @@ class ManagerConsultas extends Component{
                                                                     <tr key={consulta.IdConsulta}>
                                                                         <td>{new Date(consulta.dataConsulta).toLocaleDateString()}</td>
                                                                         <td>{new Date(consulta.dataConsulta).toLocaleTimeString()}</td>
-                                                                        {/* <td>{consulta.idMedicoNavigation.nomeMedico}</td> */}
-                                                                        {/* <td>{consulta.idMedicoNavigation.idEspecialidadeNavigation.nomeEspecialidade}</td> */}
-                                                                        {/* <td>{consulta.idProntuarioNavigation.nomePaciente}</td> */}
+                                                                        <td>{consulta.idMedicoNavigation.nomeMedico}</td>
+                                                                        <td>{consulta.idMedicoNavigation.idEspecialidadeNavigation.nomeEspecialidade}</td>
+                                                                        <td>{consulta.idProntuarioNavigation.nomePaciente}</td>  
                                                                         <td>{consulta.situacao}</td>
                                                                         <td>{consulta.descricao}</td>
                                                                         <td><button onClick={() => this.excluirConsulta(consulta)}>Excluir</button></td>

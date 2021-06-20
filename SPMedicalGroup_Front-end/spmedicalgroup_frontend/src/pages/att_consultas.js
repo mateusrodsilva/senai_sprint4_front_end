@@ -64,7 +64,10 @@ class AttConsultas extends Component{
             descricao : this.state.descricao
         }
 
-        axios.post('http://localhost:5000/api/consulta' , consulta, {
+        fetch('http://localhost:5000/api/consulta' + consulta, {
+            
+            method : 'POST',
+
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('tokenUsuario')
             }

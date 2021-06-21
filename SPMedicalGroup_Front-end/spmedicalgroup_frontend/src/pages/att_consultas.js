@@ -75,6 +75,7 @@ class AttConsultas extends Component{
         .then(resposta => {
             if (resposta.status === 201) {
                 this.setState({ isLoading : false })
+                alert("Consulta Cadastrada");
             }
         })
         .catch(erro => {
@@ -92,7 +93,7 @@ class AttConsultas extends Component{
             idProntuario : 0,
             idMedico : 0,
             dataConsulta : new Date(),
-            situacao : 0,
+            situacao : 'Selecione',
             descricao : ''
         })
         // Exibe no console do navegador a mensagem 'Os states foram resetados!'
@@ -181,8 +182,9 @@ class AttConsultas extends Component{
                                         <div className="campo_descricao">
                                             <label for="">Descrição</label>
                                             <textarea name="descricao"rows="30" cols="50" onChange={this.atualizaStateCampo} placeholder="Adicione uma descrição a esta consulta"></textarea>
-                                            <button type="submit" onClick={this.limparCampos}>Cadastrar</button>
+                                            
                                         </div>
+                                            <button type="submit">Cadastrar</button>
                                     </form>
                                 </section>
                             </div>

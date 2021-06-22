@@ -54,7 +54,7 @@ class AttConsultas extends Component{
     cadastrarConsulta = (event) => {
 
         event.preventDefault()
-        this.setState({isLoading : true})
+        this.setState({isLoading : true});
 
         let consulta = {
             idProntuario : this.state.idProntuario,
@@ -62,13 +62,20 @@ class AttConsultas extends Component{
             dataConsulta : this.state.dataConsulta,
             situacao : this.state.situacao,
             descricao : this.state.descricao
-        }
+        };
 
-        fetch('http://localhost:5000/api/consulta' + consulta, {
-            
-            method : 'POST',
+        axios.post('http://localhost:5000/api/consulta' , consulta, {
+
+            body : JSON.stringify({
+                idProntuario : this.state.idProntuario,
+                idMedico : this.state.idMedico,
+                dataConsulta : this.state.dataConsulta,
+                situacao : this.state.situacao,
+                descricao : this.state.descricao
+            }),
 
             headers : {
+                "Content-Type" : "application/json",
                 'Authorization' : 'Bearer ' + localStorage.getItem('tokenUsuario')
             }
         })
@@ -81,6 +88,7 @@ class AttConsultas extends Component{
         .catch(erro => {
             console.log(erro);
             this.setState({ isLoading : false });
+            alert("DUMBASS");
         })
     }
 

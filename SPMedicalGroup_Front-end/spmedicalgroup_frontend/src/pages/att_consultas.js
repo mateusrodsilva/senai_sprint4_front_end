@@ -88,7 +88,7 @@ class AttConsultas extends Component{
         .catch(erro => {
             console.log(erro);
             this.setState({ isLoading : false });
-            alert("DUMBASS");
+            alert("Por favor, preencha os campos obrigatórios");
         })
     }
 
@@ -104,7 +104,6 @@ class AttConsultas extends Component{
             situacao : 'Selecione',
             descricao : ''
         })
-        // Exibe no console do navegador a mensagem 'Os states foram resetados!'
     }
 
     componentDidMount(){
